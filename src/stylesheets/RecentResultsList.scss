@@ -1,0 +1,47 @@
+.CoveoRecentResultsList {
+    margin: 10px 0;
+    padding: 0;
+    position: relative;
+    border: thin solid #bcc3ca;
+    border-radius: 2px;
+
+    .coveo-recent-results-list-header {
+      padding: 10px 0;
+      background-color: #f7f8f9;
+    }
+
+    .coveo-recent-results-list-title {
+      color: #1d4f76;
+      text-align: left;
+      font-size: 15px;
+      line-height: 20px;
+      padding-left: 20px;
+    }
+
+    .coveo-recent-results-list-body {
+      background: white;
+      margin-bottom: 1px;
+
+      .coveo-recent-results-list-container {
+        margin: 0;
+      }
+
+      .coveo-recent-results-list-container .CoveoResult:first-child {
+        border-top: none;
+      }
+
+      .coveo-recent-results-list-container .CoveoResult {
+        margin: 0;
+        padding: 5px 15px;
+        border-top: thin solid #bcc3ca;
+        border-bottom: none;
+      }
+    }
+}
+
+.coveo-recent-results-list-column {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 15px;
+}
