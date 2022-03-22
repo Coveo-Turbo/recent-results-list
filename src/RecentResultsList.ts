@@ -55,7 +55,7 @@ export class RecentResultsList extends Component {
 
         const header = $$('div', { class: 'coveo-recent-results-list-header' });
         const body = $$('div', { class: 'coveo-recent-results-list-body' });
-        const title = $$('div', { class: 'coveo-recent-results-list-title' }, Coveo.l('Recent Results'));
+        const title = $$('div', { class: 'coveo-recent-results-list-title' }, Coveo.l('RecentResultsList_Title'));
         header.append(title.el);
         body.append(this.recentResultsContainer);
         this.element.appendChild(header.el);
@@ -117,10 +117,17 @@ export class RecentResultsList extends Component {
         if (this.recentResultsContainer) {
             this.recentResultsContainer.innerHTML = '';
 
-            for (const r of results) {
-                const domRecentResult = await this.prepareRecentResult(r);
-                const coveoResult = $$('div', { class: 'CoveoResult' }, domRecentResult );
-                this.recentResultsContainer.appendChild(coveoResult.el);
+            if(results.length){ 
+
+              for (const r of results) {
+                  const domRecentResult = await this.prepareRecentResult(r);
+                  const coveoResult = $$('div', { class: 'CoveoResult' }, domRecentResult );
+                  this.recentResultsContainer.appendChild(coveoResult.el);
+              }
+
+            } else {
+              const noRecentResult = $$('div', { class: 'coveo-recent-results-list-no-result' }, Coveo.l('RecentResultsList_NoResults') );
+              this.recentResultsContainer.appendChild(noRecentResult.el);
             }
             
         } else {
