@@ -70,8 +70,21 @@ export class RecentResultsList extends Component {
 
     private handleChangeAnalyticsCustomData(args: IChangeAnalyticsCustomDataEventArgs) {
       if (args.type == 'ClickEvent' && RecentResultsList.actionCauseList.includes(args.actionCause) && args['resultData']) {
-          this.addToRecentResults(_.omit(args['resultData'], 'searchInterface'))
+          const { searchInterface, ...result} = args['resultData'];
+          this.addToRecentResults(this.resetHightlights(result));
           this.save();
+      }
+    }
+
+    private resetHightlights(result) {
+      return {
+        ...result,
+        excerptHighlights:[],
+        firstSentencesHighlights:[],
+        phrasesToHighlights:[],
+        printableUriHighlights:[],
+        summaryHighlights:[],
+        titleHighlights:[] 
       }
     }
 
