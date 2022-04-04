@@ -14,7 +14,7 @@ export class RecentResultsList extends Component {
       maxLength: ComponentOptions.buildNumberOption({defaultValue: 10}),
       results: <any>ComponentOptions.buildJsonOption({defaultValue: []}),
       recentResultTemplate: ComponentOptions.buildTemplateOption({
-          defaultFunction: (e) => Coveo.HtmlTemplate.fromString(RecentResultsList.defaultRecentResultsTemplate(), {}),
+          defaultFunction: (e) => Coveo.HtmlTemplate.fromString(RecentResultsList.defaultRecentResultsTemplate, {}),
           selectorAttr: 'data-template-selector',
           idAttr: 'data-template-id'
       })
@@ -25,7 +25,7 @@ export class RecentResultsList extends Component {
       analyticsActionCauseList.documentQuickview.name
     ]
 
-    static defaultRecentResultsTemplate = _.template('<div class="CoveoResultLink"></div>');
+    static defaultRecentResultsTemplate = `<div class="CoveoResultLink"></div>`;
 
     public recentResults: IQueryResult[];
     private analyticsElement: HTMLElement;
